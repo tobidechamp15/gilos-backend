@@ -40,14 +40,14 @@ export async function POST(req) {
   // Send email
   await sendActivationEmail(email, activationCode);
 
-  return new Response(
-    JSON.stringify({
+  return NextResponse.json(
+    {
       message: "Signup successful. Check your email.",
       user: {
         email,
         id: user._id,
       },
-    }),
+    },
     { status: 201 }
   );
 }
