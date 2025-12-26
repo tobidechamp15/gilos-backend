@@ -3,6 +3,7 @@ import dbConnect from "@/lib/mongodb";
 import User from "@/models/User";
 import generateActivationCode from "@/lib/generateCode";
 import sendActivationEmail from "@/lib/sendEmail";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   await dbConnect();
