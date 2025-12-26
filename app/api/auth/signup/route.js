@@ -11,15 +11,15 @@ export async function POST(req) {
   const { email, password } = await req.json();
 
   if (!email || !password) {
-    return new Response(
-      JSON.stringify({ error: "Email and password are required" }),
+    return NextResponse.json(
+      { error: "Email and password are required" },
       { status: 400 }
     );
   }
 
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    return new Response(JSON.stringify({ error: "User exists" }), {
+    return NextResponse.json({ error: "User exists" }, {
       status: 400,
     });
   }
